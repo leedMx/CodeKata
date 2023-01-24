@@ -10,7 +10,7 @@ But for the moment being I created a basic gradle repository.
 ### Sections of the code
 
 - I included this README.md to practice my markdown.
-- There should also be a REPRODUCE.md doc somewhere where I can take notes of everything I've done, as to prevent me for forgetting some important steps
+- There is also [REPRODUCE.md](/REPRODUCE.md) where I take notes of the steps for the repo.
 
 ### Goals (Not in order of importance)
 
