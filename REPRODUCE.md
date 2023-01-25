@@ -41,3 +41,18 @@ git push
 After that, a bit of editing in README.md, editing in vim is a bit tricky and I required some practice.
 But basically you use `h` `j` `k` `l` as arrows and move into different modes to edit and navigate.  
 _COMMAND_MODE_ is where you use commands preceded by `:`to do stuff, for example `:wq` stands for write and quit and `:q!` is force quit (Quit!)
+
+Now for Gradle initialization:
+~~~
+gradle init
+// accept all defaults
+echo .idea >> .gitignore
+git add .
+git commit -m "gradle basic project initialised"
+~~~
+`.gitignore` file was automatically added by gradle to ignore `.gradle` and build files.
+I just appended `.idea` because I will use the editor at some point and don't want to generate extra files in the repo.
+The project now has an empty gradle project, which basically includes a jar executable `gradle/gradle-wrapper.jar` which runs through `gradlew` or `gradlew.bat` (depends on the system) is the program in charge of reading `settings.gradle` and `build.gradle`.
+Gradle files inculde instructions on how to use "plugins", which are basically set of instructions for gradle to handle source files and its tasks.
+I really like using gradle, specially for managing multiple projects in the same repo.
+For now however, I will only use it for a single Java application, but will refactor it later to include multiple projects, maybe some React projects as well.
