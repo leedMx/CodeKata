@@ -37,3 +37,7 @@ git add .
 git commit -m "Including REPRODUCE.md"
 git push
 ~~~
+
+After that, a bit of editing in README.md, editing in vim is a bit tricky and I required some practice.
+But basically you use `h` `j` `k` `l` as arrows and move into different modes to edit and navigate.  
+_COMMAND_MODE_ is where you use commands preceded by `:`to do stuff, for example `:wq` stands for write and quit and `:q!` is force quit (Quit!)
