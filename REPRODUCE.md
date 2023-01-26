@@ -11,8 +11,9 @@ mkdir CodeKata
 cd CodeKata
 ~~~
 Create README.md 
- 
-    vim README.md
+~~~ 
+vim README.md
+~~~
 Use `a` (for append) to enter _INSERT_MODE_ and type away.  
 Press ESC to exit _INSERT_MODE_.  
 Type command `:wq` to save changes and exit.
@@ -56,3 +57,27 @@ The project now has an empty gradle project, which basically includes a jar exec
 Gradle files inculde instructions on how to use "plugins", which are basically set of instructions for gradle to handle source files and its tasks.
 I really like using gradle, specially for managing multiple projects in the same repo.
 For now however, I will only use it for a single Java application, but will refactor it later to include multiple projects, maybe some React projects as well.
+
+Using the same gradle init script I restructured the project to actually include the default java app image.
+Is pretty easy to understand. There's a new `app` folder, which includes the default maven java project structure.
+Meaning a `src` folder on the root, followed by `main` and `test`, inside them, there should be a language specific directory `java` in this case.
+And that is the entry point for classes hierarchy, in this case the package is simply `CodeKata` and the main class must include a standard `public static void main(args...)` class.
+The `build.gradle` file now is inside the `app` folder at the root. And it includes:
+- plugins: Gradle extensible plugins, they provide tasks and config information. In this case only `application` which basically add all java app necessary task
+- dependencies and repositories: Maven by default, all package management required info.
+- plugin/task specific config: 
+  - For the application plugin task, there's the "Where's the main class?" config.
+  - There's also instructions to use Junit for the testing task.
+
+The last thing to notice is that `settings.gradle` now has `include('app')`, which let's gradle know that there's such folder that needs to be considered and used as a gradle project.
+This comes in handy when there's more than one project. This structure is pretty much the same as a multiproject gradle. Main difference being that multiproject enforces the use of a folder `buildSrc` which is where gradle defines custom plugins.
+All is needed, is to append another include for each gradle project folder equivalent to the `app` one in the current.
+
+So, now that the app is properly structured, to run the app both of the following are acceptable:
+~~~
+./gradlew run
+./gradlew app:run
+~~~
+Also, there's other tasks `check` or `test` will work.
+There's also a bit of a bug here, when trying to run a single test using intellij, wathever is trying to run the tests (most likely local Gradle installation) cannot really find the tests.
+But when running `gradlew :test`, test task runs ok. This is easily solved by configuring intellij settings in `Build, Execution, Deployment > Build Tools > gradle` and setting intellij for running tests.
