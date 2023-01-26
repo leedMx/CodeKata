@@ -79,5 +79,7 @@ So, now that the app is properly structured, to run the app both of the followin
 ./gradlew app:run
 ~~~
 Also, there's other tasks `check` or `test` will work.
-There's also a bit of a bug here, when trying to run a single test using intellij, wathever is trying to run the tests (most likely local Gradle installation) cannot really find the tests.
+
+~~There's also a bit of a bug here~~, when trying to run a single test using intellij, wathever is trying to run the tests (most likely local Gradle installation) cannot really find the tests.
 But when running `gradlew :test`, test task runs ok. This is easily solved by configuring intellij settings in `Build, Execution, Deployment > Build Tools > gradle` and setting intellij for running tests.
+This bug is now fixed, the problem was coming from the fact that gradle was not able to localize the test inside a package starting with uppercase. Changed the case and is working now. This is also java convention.
