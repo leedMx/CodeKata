@@ -4,8 +4,13 @@
 package ccodeKata;
 
 public class App {
+
     public String getGreeting() {
         return "Hello World!";
+    }
+
+    public String getGreeting(String name){
+        return name == null ? getGreeting() : String.format("Hello %s!", name);
     }
 
     public static void main(String[] args) {
